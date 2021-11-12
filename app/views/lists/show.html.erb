@@ -2,9 +2,22 @@
 
 <h2> All <%= @list.name %> movies </h2>
 
-<% @list.movies.each do |movie| %>
-    <%=  movie.title %>
-    <%=  movie.overview %>
-    <%=  movie.poster_url %>
-    <%=  movie.rating %>
-  <% end %>
+<div class="container">
+  <div class = 'row'>
+    <div class="bookmarks">
+        <% @list.bookmarks.each do |bookmark| %>
+          <div class="header">
+            <h3><%= bookmark.movie.title %></h3>
+            <%= bookmark.movie.overview %>
+          </div>
+        <%= bookmark.comment %>
+        <div class="footer">
+          <%= bookmark.movie.rating%>
+          <%= link_to 'Delete', bookmark_path(bookmark), method: :delete %>
+        </div>
+        <% end  %>
+    </div>
+  </div>
+</div>
+
+<%=link_to 'Create a Bookmark', new_list_bookmark_path(@list) %>
