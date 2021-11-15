@@ -28,3 +28,5 @@ movies ["results"].each do |result|
     poster_url: result ['poster_path']
   )
 end
+
+
